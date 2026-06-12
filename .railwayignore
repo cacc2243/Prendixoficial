@@ -1,0 +1,11 @@
+# Arquivos que não precisam ir pro deploy
+.git
+.gitignore
+.vscode
+.idea
+*.log
+.DS_Store
+.env*.local
+README.md
+node_modules
+.next
