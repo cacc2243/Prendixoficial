@@ -87,7 +87,7 @@ export function PaywallSheet({
     return (
       <BottomSheet open={!!serie} onClose={handleClose} labelledBy="paywall-title">
         <div className="relative">
-          {/* Background com imagem única ocupando todo espaço */}
+          {/* Background com apenas UMA imagem - muito mais escuro */}
           <div className="absolute inset-0 z-0 overflow-hidden rounded-t-[28px]">
             <Image
               src="/images/hero-rotate-3.jpg"
@@ -96,14 +96,13 @@ export function PaywallSheet({
               className="object-cover"
               priority
             />
-            {/* Gradiente mais escuro embaixo */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
+            {/* Gradiente MUITO mais escuro para os cards não ficarem transparentes */}
+            {/* Gradiente: mais claro no topo, escuro embaixo */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/75 to-black/95" />
           </div>
 
-          {/* Topo com imagem */}
-          <div className="relative h-44 w-full shrink-0">
-            <Image src={serie.img || "/placeholder.svg"} alt={serie.title} fill className="object-cover" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-background from-30% via-background/70 to-transparent" />
+          {/* Botão de fechar - sem imagem da série */}
+          <div className="relative z-10 px-5 pt-6">
             <button
               type="button"
               onClick={handleClose}
@@ -114,7 +113,7 @@ export function PaywallSheet({
             </button>
           </div>
 
-          <div className="relative z-10 -mt-12 px-5 pb-32">
+          <div className="relative z-10 px-5 pb-32 pt-2">
           <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
             <Crown className="h-3.5 w-3.5 fill-current" />
             Prendix Premium
@@ -128,9 +127,9 @@ export function PaywallSheet({
             pagar por episódio.
           </p>
 
-          {/* Destaque dourado */}
-          <div className="mt-5 flex items-center gap-2.5 rounded-xl border border-gold/40 bg-gold/10 px-3 py-2.5">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold/20 text-gold">
+          {/* Destaque dourado - MENOS TRANSPARENTE */}
+          <div className="mt-5 flex items-center gap-2.5 rounded-xl border border-gold/60 bg-gold/25 px-3 py-2.5 backdrop-blur-sm">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold/40 text-gold">
               <Crown className="h-3.5 w-3.5 fill-current" />
             </span>
             <div className="min-w-0">
@@ -158,8 +157,8 @@ export function PaywallSheet({
                   aria-pressed={active}
                   className={`flex w-full items-center gap-3 rounded-2xl border p-4 text-left transition ${
                     active
-                      ? "border-primary bg-primary/10 shadow-md shadow-primary/20"
-                      : "border-border bg-card"
+                      ? "border-primary bg-primary/30 shadow-lg shadow-primary/30 backdrop-blur-sm"
+                      : "border-border bg-card/80 backdrop-blur-sm"
                   }`}
                 >
                   <span
@@ -179,6 +178,11 @@ export function PaywallSheet({
                       )}
                     </p>
                     <p className="text-xs text-muted-foreground">{p.note}</p>
+                    {p.id === "anual" && (
+                      <p className="mt-0.5 text-[10px] text-muted-foreground">
+                        R$ 142,80 cobrado anualmente
+                      </p>
+                    )}
                   </div>
                   <div className="text-right">
                     <p className="text-xl font-bold text-foreground">{p.price}</p>
@@ -228,17 +232,17 @@ export function PaywallSheet({
   return (
     <BottomSheet open={show18Plus} onClose={handleClose} labelledBy="addon-title">
       <div className="relative min-h-[500px]">
-        {/* Background com imagem única ocupando todo espaço */}
+        {/* Background com imagem diferente para +18 */}
         <div className="absolute inset-0 z-0 overflow-hidden rounded-t-[28px]">
           <Image
-            src="/images/hero-rotate-3.jpg"
+            src="/images/hero-rotate-1.jpg"
             alt=""
             fill
             className="object-cover"
             priority
           />
-          {/* Gradiente mais escuro embaixo */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
+          {/* Gradiente: mais claro no topo, escuro embaixo */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/75 to-black/95" />
         </div>
 
         <div className="relative z-10 px-5 pb-8 pt-6">
