@@ -87,16 +87,17 @@ export function PaywallSheet({
     return (
       <BottomSheet open={!!serie} onClose={handleClose} labelledBy="paywall-title">
         <div className="relative">
-          {/* Background com imagem do hero */}
+          {/* Background com imagem única ocupando todo espaço */}
           <div className="absolute inset-0 z-0 overflow-hidden rounded-t-[28px]">
             <Image
               src="/images/hero-rotate-3.jpg"
               alt=""
               fill
-              className="object-cover opacity-75"
+              className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background/85" />
+            {/* Gradiente mais escuro embaixo */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
           </div>
 
           {/* Topo com imagem */}
@@ -227,16 +228,17 @@ export function PaywallSheet({
   return (
     <BottomSheet open={show18Plus} onClose={handleClose} labelledBy="addon-title">
       <div className="relative min-h-[500px]">
-        {/* Background com imagem do hero */}
+        {/* Background com imagem única ocupando todo espaço */}
         <div className="absolute inset-0 z-0 overflow-hidden rounded-t-[28px]">
           <Image
             src="/images/hero-rotate-3.jpg"
             alt=""
             fill
-            className="object-cover opacity-75"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background/85" />
+          {/* Gradiente mais escuro embaixo */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
         </div>
 
         <div className="relative z-10 px-5 pb-8 pt-6">
