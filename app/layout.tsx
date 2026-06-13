@@ -75,6 +75,15 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Meta Pixel Code */}
+
+        {/* Utmify Script */}
+        <script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck
+          data-utmify-prevent-subid
+          async
+          defer
+        />
       </head>
       <body className="font-sans antialiased">
         {children}
