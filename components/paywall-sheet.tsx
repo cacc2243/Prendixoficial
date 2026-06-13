@@ -76,8 +76,38 @@ export function PaywallSheet({
   }
 
   const handleConfirm18Plus = (with18: boolean) => {
-    const link = with18 ? selected.linkWith18 : selected.linkNormal
-    window.open(link, '_blank')
+    const baseLink = with18 ? selected.linkWith18 : selected.linkNormal
+    
+    // Capturar UTMs da URL atual
+    const urlParams = new URLSearchParams(window.location.search)
+    const utmParams = new URLSearchParams()
+    
+    // Parâmetros UTM padrão
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+    
+    utmKeys.forEach(key => {
+      const value = urlParams.get(key)
+      if (value) {
+        utmParams.append(key, value)
+      }
+    })
+    
+    // Adicionar outros parâmetros de tracking comuns
+    const trackingKeys = ['src', 'sck', 'subid', 'fbclid', 'gclid', 'ttclid']
+    trackingKeys.forEach(key => {
+      const value = urlParams.get(key)
+      if (value) {
+        utmParams.append(key, value)
+      }
+    })
+    
+    // Montar URL final com UTMs
+    const separator = baseLink.includes('?') ? '&' : '?'
+    const finalLink = utmParams.toString() 
+      ? `${baseLink}${separator}${utmParams.toString()}`
+      : baseLink
+    
+    window.open(finalLink, '_blank')
     // Resetar para o modal inicial após redirecionar
     setShow18Plus(false)
   }
