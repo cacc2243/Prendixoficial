@@ -340,7 +340,7 @@ export function ReaderScreenHistoria3() {
       <div className="relative shrink-0">
         {/* Imagem de capa - MAIOR */}
         <div className="relative aspect-[9/13] w-full">
-          <Image src="/historia3/ChatGPT Image 11 de jun. de 2026, 12_58_33 (1).png" alt="Meu marido dormia com minha melhor amiga" fill className="object-cover" priority />
+          <Image src="/historia3/cover.png" alt="Meu marido dormia com minha melhor amiga" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-background from-20% via-background/40 to-transparent" />
         </div>
 
