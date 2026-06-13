@@ -9,3 +9,6 @@ cmds = ["pnpm run build"]
 
 [start]
 cmd = "pnpm start"
+
+[staticAssets]
+"/public" = "public"
