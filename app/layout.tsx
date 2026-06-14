@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  other: {
+    'facebook-domain-verification': 'z14vceur9bfgr219u028cj3twe6z0i',
+  },
 }
 
 export default function RootLayout({
