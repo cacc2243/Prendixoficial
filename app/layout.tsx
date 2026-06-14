@@ -2,7 +2,6 @@ import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import type { Metadata } from 'next'
 import { Manrope, Playfair_Display } from 'next/font/google'
-import { FacebookPixelEvents } from '@/lib/facebook-pixel'
 import './globals.css'
 
 const manrope = Manrope({
@@ -74,6 +73,7 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '2147203006066070');
             fbq('track', 'PageView');
+            fbq('track', 'ViewContent');
           `}
         </Script>
 
@@ -85,7 +85,6 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        <FacebookPixelEvents />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
