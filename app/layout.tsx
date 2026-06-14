@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Manrope, Playfair_Display } from 'next/font/google'
+import { FacebookPixelEvents } from '@/lib/facebook-pixel'
 import './globals.css'
 
 const manrope = Manrope({
@@ -86,6 +87,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <FacebookPixelEvents />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
