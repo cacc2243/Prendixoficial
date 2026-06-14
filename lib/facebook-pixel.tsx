@@ -13,17 +13,31 @@ export function FacebookPixelEvents() {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      // Track page view on route change
-      window.fbq('track', 'PageView')
-      
-      // Track ViewContent em todas as páginas
-      window.fbq('track', 'ViewContent', {
-        content_name: pathname,
-        content_category: pathname === '/' ? 'home' : pathname.split('/')[1] || 'page',
-        content_type: 'page',
-      })
-    }
+    // Aguardar o pixel carregar
+    const checkPixel = setInterval(() => {
+      if (typeof window !== 'undefined' && window.fbq) {
+        clearInterval(checkPixel)
+        
+        console.log('Facebook Pixel carregado!')
+        
+        // Track page view on route change
+        window.fbq('track', 'PageView')
+        console.log('PageView disparado para:', pathname)
+        
+        // Track ViewContent em todas as páginas
+        window.fbq('track', 'ViewContent', {
+          content_name: pathname,
+          content_category: pathname === '/' ? 'home' : pathname.split('/')[1] || 'page',
+          content_type: 'page',
+        })
+        console.log('ViewContent disparado para:', pathname)
+      }
+    }, 100)
+
+    // Limpar após 5 segundos
+    setTimeout(() => clearInterval(checkPixel), 5000)
+
+    return () => clearInterval(checkPixel)
   }, [pathname])
 
   return null
